@@ -102,4 +102,13 @@ function updateCart(){
     cartContainer.innerHTML += totalHTML
     
     
+    if(cart.length > 0){
+        emptyCart.style.display = "none";
+        cartContainer.style.display = "block"
+    }
+    else{
+        emptyCart.style.display = "block"
+    }
+
+    
 }
