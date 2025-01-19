@@ -48,8 +48,41 @@ addToCartButtons.forEach((addButton) => {
                 quantity : 1
             });
         }
-        
-        console.log(cart);
+        console.log(cart)
+        updateCart()
         
     });
 });
+
+const emptyCart = document.querySelector(".empty-cart");
+const cartContainer = document.querySelector(".cart-with-items");
+
+function updateCart(){
+    // Populating cart dynamically
+    let cartHTML = ""
+    cartContainer.innerHTML = ""
+
+    cart.forEach((item) => {
+        cartHTML = `
+            <div class="cart-added-items">
+                <div class="added-items-details">
+                    <div class="added-item-name">${item.name}</div>
+                    <div class="quantity-and-price">
+                        <p class="item-quantity">${item.quantity}x</p>
+                        <p class="price-per-item">@$${item.price}</p>
+                        <p class="quantity-and-price-product">$${(item.quantity * item.price).toFixed(2)}</p>
+                    </div>
+                </div>
+
+                <div class="remove-button-container">
+                    <button class="remove-button">
+                        <img src="/assests/images/icon-remove-item.svg" alt="">
+                    </button>
+                    
+                </div>
+            </div>
+        `;
+        cartContainer.innerHTML += cartHTML
+    });
+    
+}
