@@ -26,3 +26,5 @@ products.forEach((product) => {
     `;
 });
 document.querySelector(".products-grid").innerHTML = productsHTML
+
+// Looping through Add To Cart Buttons
