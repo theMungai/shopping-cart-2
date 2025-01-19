@@ -99,9 +99,15 @@ function updateCart(){
         </div>
 
         <div class="confirm-order-container">
-            <button>Confirm Your Order</button>
+            <button class = "confirm-order-btn">Confirm Your Order</button>
         </div>
     `;
+
+    // Handling Confirm Order Button
+    const confirmOrder = document.querySelector(".confirm-order-btn");
+    confirmOrder.addEventListener("click", () => {
+        displayOrderConfirmed(totalAmount)
+    });
 
     cartContainer.innerHTML += totalHTML
     
@@ -112,7 +118,9 @@ function updateCart(){
     }
     else{
         emptyCart.style.display = "block"
-    }
+    } 
+}
 
-    
+function displayOrderConfirmed(totalAmount){
+
 }
