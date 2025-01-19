@@ -48,7 +48,6 @@ addToCartButtons.forEach((addButton) => {
                 quantity : 1
             });
         }
-        console.log(cart)
         updateCart()
         
     });
@@ -87,6 +86,11 @@ function updateCart(){
         totalAmount += item.quantity * item.price
         cartContainer.innerHTML += cartHTML
     });
+
+    // Update cartQuantity
+    const cartQuantity = document.querySelector(".cart-quantity");
+
+    cartQuantity.textContent = cart.reduce((acc, item) => acc + item.quantity, 0)
 
     const totalHTML = `
         <div class="total-container">
