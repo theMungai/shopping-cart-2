@@ -69,3 +69,15 @@ body{
     justify-content: space-between;
     align-items: center;
 }
+
+.total-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0px;
+}
+
+.confirm-order-container{
+    text-align: center;
+    margin: 20px 0px;
+}

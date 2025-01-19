@@ -62,6 +62,7 @@ function updateCart(){
     let cartHTML = ""
     cartContainer.innerHTML = ""
 
+    let totalAmount = 0;
     cart.forEach((item) => {
         cartHTML = `
             <div class="cart-added-items">
@@ -69,7 +70,7 @@ function updateCart(){
                     <div class="added-item-name">${item.name}</div>
                     <div class="quantity-and-price">
                         <p class="item-quantity">${item.quantity}x</p>
-                        <p class="price-per-item">@$${item.price}</p>
+                        <p class="price-per-item">@$${(item.price * 1).toFixed(2)}</p>
                         <p class="quantity-and-price-product">$${(item.quantity * item.price).toFixed(2)}</p>
                     </div>
                 </div>
@@ -80,9 +81,25 @@ function updateCart(){
                     </button>
                     
                 </div>
+
             </div>
         `;
+        totalAmount += item.quantity * item.price
         cartContainer.innerHTML += cartHTML
     });
+
+    const totalHTML = `
+        <div class="total-container">
+            <p>Order Total</p>
+            <h1>$${totalAmount.toFixed(2)}</h1>
+        </div>
+
+        <div class="confirm-order-container">
+            <button>Confirm Your Order</button>
+        </div>
+    `;
+
+    cartContainer.innerHTML += totalHTML
+    
     
 }
