@@ -12,7 +12,7 @@ products.forEach((product) => {
             </picture>
 
             <div class="button-cart-container">
-                <button class = "add-to-cart js-add-to-cart-btn">
+                <button class = "add-to-cart js-add-to-cart-btn" data-product-name = "${product.name}" data-product-price = "${product.price}">
                     <img src="/assests/images/icon-add-to-cart.svg" alt="">
                     Add to Cart
                 </button>
@@ -20,8 +20,8 @@ products.forEach((product) => {
 
             <div class="product-details">
                 <p class="product-category">${product.category}</p>
-                <p class="product-name" data-product-name = "${product.name}">${product.name}</p>
-                <p class="product-price" data-product-price = "${product.price}">$${product.price.toFixed(2)}</p>
+                <p class="product-name">${product.name}</p>
+                <p class="product-price">$${product.price.toFixed(2)}</p>
             </div>
         </div>
     `;
@@ -35,10 +35,21 @@ addToCartButtons.forEach((addButton) => {
         const productName = addButton.dataset.productName;
         const productPrice = addButton.dataset.productPrice;
 
-        cart.push({
-            name : productName,
-            price : productPrice,
-            quantity : 1
-        })
+        // If product already exists in the cart, the quantity should be increased
+        const existingProduct = cart.find((item) => item.name === productName)
+        
+        if(existingProduct){
+            existingProduct.quantity += 1
+        }
+        else{
+            cart.push({
+                name : productName,
+                price : productPrice,
+                quantity : 1
+            });
+        }
+        
+        console.log(cart);
+        
     });
 });
