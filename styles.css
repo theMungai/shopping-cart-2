@@ -24,6 +24,8 @@ body{
 
 .products-container{
     width: 75%;
+    padding: 20px;
+    border: 2px solid red;
 }
 
 .products-grid{
@@ -46,7 +48,24 @@ body{
 
 .cart-container{
     width: 25%;
+    border: 2px solid red;
 }
 .empty-cart{
     text-align: center;
+}
+
+.cart-with-items {
+    padding: 20px;
+}
+
+.cart-added-items {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.added-items-details .quantity-and-price{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
