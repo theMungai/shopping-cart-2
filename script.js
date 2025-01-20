@@ -56,6 +56,7 @@ addToCartButtons.forEach((addButton) => {
 const emptyCart = document.querySelector(".empty-cart");
 const cartContainer = document.querySelector(".cart-with-items");
 
+const popupContainer = document.querySelector(".popup-dialog-container");
 function updateCart(){
     // Populating cart dynamically
     let cartHTML = ""
@@ -102,14 +103,14 @@ function updateCart(){
             <button class = "confirm-order-btn">Confirm Your Order</button>
         </div>
     `;
+    cartContainer.innerHTML += totalHTML
 
     // Handling Confirm Order Button
     const confirmOrder = document.querySelector(".confirm-order-btn");
-    confirmOrder.addEventListener("click", () => {
+    confirmOrder.addEventListener("click", () => {      
+        popupContainer.style.display = "block"
         displayOrderConfirmed(totalAmount)
     });
-
-    cartContainer.innerHTML += totalHTML
     
     
     if(cart.length > 0){
@@ -122,5 +123,48 @@ function updateCart(){
 }
 
 function displayOrderConfirmed(totalAmount){
+    
+    let modalHTML = `
+        <div class="order-confirmed">
+            <div class="order-confirmed-header">
+                <img src="/assests/images/icon-order-confirmed.svg" alt="">
+                <h1>Order Confirmed</h1>
+                <p>We hope you enjoy your food!</p>
+            </div>
+    `;
 
+    popupContainer.innerHTML = modalHTML
+
+    cart.forEach((item) => {
+        const product = products.find((product) => product.name === item.name)
+        modalHTML += `
+            <div class="confirmed-cart-item">
+                <div class="confirmed-item-details">
+                    <div class="thumbnail-container">
+                        <img src="${product.image.thumbnail}" alt="">
+                    </div>
+                    <div class="confirmed-product-name-and-price">
+                        <p class="confrimed-product-name">${item.name}</p>
+                        <div class="confirmed-quantity-and-price">
+                            <p class="confirmed-quantity">${item.quantity}x</p>
+                            <p class="confirmed-price-per-item">@$${(item.price * 1).toFixed(2)}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="confirmed-quantity-and-price-product">$${(item.quantity * item.price).toFixed(2)}</div>
+            </div>
+        `;
+    });
+
+    modalHTML += `
+        <div class="total-container">
+                <p>Order Total</p>
+                <h1>$${totalAmount.toFixed(2)}</h1>
+            </div>
+
+            <button class="start-new-order">Start New Order</button>
+        </div>
+    `;
+
+    popupContainer.innerHTML = modalHTML
 }

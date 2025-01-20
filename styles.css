@@ -91,6 +91,7 @@ body{
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
+    display: none;
 }    
 
 .popup-dialog-container .order-confirmed{
@@ -103,7 +104,6 @@ body{
     left: 50%;
     transform: translate(-50%,-50%);
     overflow-y: scroll;
-    display: grid;
     
 }
 
