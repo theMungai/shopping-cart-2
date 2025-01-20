@@ -167,4 +167,9 @@ function displayOrderConfirmed(totalAmount){
     `;
 
     popupContainer.innerHTML = modalHTML
+
+    const startNewOrder = document.querySelector(".start-new-order");
+    startNewOrder.addEventListener("click", () => {
+        window.location.reload(true)
+    })
 }
